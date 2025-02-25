@@ -31,7 +31,7 @@ install(
     EXPORT ${PROJECT_C_API}Targets
     FILE ${PROJECT_C_API}Targets.cmake
     NAMESPACE concurrentqueue::
-    DESTINATION cmake/${PROJECT_C_API}
+    DESTINATION cmake
 )
 
 configure_package_config_file(
@@ -50,5 +50,5 @@ install(
     FILES
         "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_C_API}Config.cmake"
         "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_C_API}ConfigVersion.cmake"
-    DESTINATION lib/cmake/${PROJECT_C_API}
+    DESTINATION cmake
 )
