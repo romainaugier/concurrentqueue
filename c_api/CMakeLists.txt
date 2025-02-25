@@ -37,13 +37,14 @@ install(
 configure_package_config_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_C_API}Config.cmake.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_C_API}Config.cmake"
+    PATH_VARS CMAKE_INSTALL_LIBDIR CMAKE_INSTALL_INCLUDEDIR
     INSTALL_DESTINATION lib/cmake/${PROJECT_C_API}
 )
 
 write_basic_package_version_file(
     "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_C_API}ConfigVersion.cmake"
     VERSION ${PROJECT_VERSION}
-    COMPATIBILITY SameMajorVersion
+    COMPATIBILITY AnyNewerVersion
 )
 
 install(
