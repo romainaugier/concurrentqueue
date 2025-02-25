@@ -15,6 +15,10 @@ target_include_directories(${PROJECT_C_API} PUBLIC
 target_compile_definitions(${PROJECT_C_API} PUBLIC -DMOODYCAMEL_STATIC)
 set_target_properties(${PROJECT_C_API} PROPERTIES DEBUG_POSTFIX "d")
 
+if(UNIX)
+    target_compile_options(${PROJECT_C_API} PUBLIC "-fPIC")
+endif()
+
 install(
     FILES concurrentqueue.h
     DESTINATION include/concurrentqueue
