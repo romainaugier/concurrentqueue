@@ -2,13 +2,13 @@
 
 Bash
 ```bash
-export BUILDDIR=$CD/cqbuild
-export INSTALLDIR=$CD/cqinstall
+export BUILDDIR=$PWD/cqbuild
+export INSTALLDIR=$PWD/cqinstall
 cmake -S . -B $BUILDDIR -DC_API=1
 cd $BUILDDIR
 cmake --build . --config Debug
 cmake --build . --config Release
-cmake --install . --prefix ../$INSTALLDIR
+cmake --install . --prefix $INSTALLDIR
 cd ..
 ```
 
@@ -20,6 +20,6 @@ cmake -S . -B %BUILDDIR% -DC_API=1
 cd %BUILDDIR%
 cmake --build . --config Debug
 cmake --build . --config Release
-cmake --install . --prefix ../%INSTALLDIR%
+cmake --install . --prefix %INSTALLDIR%
 cd ..
 ```
