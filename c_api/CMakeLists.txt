@@ -8,7 +8,7 @@ file(GLOB_RECURSE SOURCES *.cpp)
 add_library(${PROJECT_C_API} STATIC ${SOURCES})
 
 target_include_directories(${PROJECT_C_API} PUBLIC
-    $<INSTALL_INTERFACE:include>
+    # $<INSTALL_INTERFACE:include>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 )
 
@@ -42,7 +42,7 @@ configure_package_config_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_C_API}Config.cmake.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_C_API}Config.cmake"
     PATH_VARS CMAKE_INSTALL_LIBDIR CMAKE_INSTALL_INCLUDEDIR
-    INSTALL_DESTINATION lib/cmake/${PROJECT_C_API}
+    INSTALL_DESTINATION cmake
 )
 
 write_basic_package_version_file(
