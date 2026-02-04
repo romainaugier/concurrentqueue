@@ -5,7 +5,7 @@ include(${CMAKE_CURRENT_LIST_DIR}/concurrentqueue_c_apiTargets.cmake)
 if(WIN32)
     if(EXISTS "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_LIBDIR@" AND EXISTS "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_BINDIR@")
         set_target_properties(
-            @PROJECT_NAME@::@PROJECT_NAME@ PROPERTIES
+            @PROJECT_NAME@::@PROJECT_C_API@ PROPERTIES
             IMPORTED_IMPLIB_DEBUG "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_LIBDIR@/@PROJECT_NAME@d@CMAKE_IMPORT_LIBRARY_SUFFIX@"
             IMPORTED_IMPLIB_RELEASE "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_LIBDIR@/@PROJECT_NAME@@CMAKE_IMPORT_LIBRARY_SUFFIX@"
         )
@@ -13,7 +13,7 @@ if(WIN32)
 else()
     if(EXISTS "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_LIBDIR@")
         set_target_properties(
-            @PROJECT_NAME@::@PROJECT_NAME@ PROPERTIES
+            @PROJECT_NAME@::@PROJECT_C_API@ PROPERTIES
             IMPORTED_IMPLIB_DEBUG "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_LIBDIR@/@PROJECT_NAME@d@CMAKE_IMPORT_LIBRARY_SUFFIX@"
             IMPORTED_IMPLIB_RELEASE "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_LIBDIR@/@PROJECT_NAME@@CMAKE_IMPORT_LIBRARY_SUFFIX@"
         )
@@ -21,5 +21,5 @@ else()
 endif()
 
 set_and_check(concurrentqueue_c_api_INCLUDE_DIR "@PACKAGE_CMAKE_INSTALL_INCLUDEDIR@")
-set(concurrentqueue_c_api_LIBRARIES concurrentqueue::concurrentqueue_c_api)
-check_required_components(concurrentqueue_c_api)
+set(concurrentqueue_c_api_LIBRARIES @PROJECT_NAME@::@PROJECT_C_API@)
+check_required_components(@PROJECT_C_API@)
